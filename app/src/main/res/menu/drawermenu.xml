@@ -5,10 +5,10 @@
 
 
 
-    <item android:title="Sounds"
+    <item android:title="Challenges"
         android:id="@+id/nav_item_inbox"
         android:layout_marginTop="10dp"
-        android:icon="@drawable/soundicon" />
+        android:icon="@drawable/luckwheel" />
 
     <item android:title="Share App"
         android:id="@+id/teilen"
@@ -18,14 +18,6 @@
     <item android:title="More from us ">
         <menu>
 
-            <item
-                android:id="@+id/soundboardapps"
-                android:icon="@drawable/playstore"
-                android:title="All Soundboards" />
-            <item
-                android:id="@+id/buttonapps"
-                android:icon="@drawable/button"
-                android:title="All Button Apps" />
 
             <item
                 android:id="@+id/chestmap"
