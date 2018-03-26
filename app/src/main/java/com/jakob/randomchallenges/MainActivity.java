@@ -44,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
     NavigationView mNavigationView;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -115,6 +115,162 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+                if(menuItem.getItemId() == R.id.teilen){
+
+                    Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                    shareIntent.setType("text/plain");
+                    shareIntent.putExtra(Intent.EXTRA_SUBJECT, getText(R.string.app_name));
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, getText(R.string.text_fuers_teilen_vor_name) + " " +  getText(R.string.app_name) + " " + getText(R.string.text_fuers_teilen_nach_name) +"\n\n" + getText(R.string.link_zur_app));
+                    startActivity(Intent.createChooser(shareIntent,  "Share via..."));
+                }
+
+
+
+                if (menuItem.getItemId() == R.id.chestmap) {
+
+                    String url = "https://play.google.com/store/apps/details?id=com.pentasounds.fortnitechestmap";
+
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    onPause();
+                    startActivity(intent);
+                }
+
+                if (menuItem.getItemId() == R.id.ninjasoundboard) {
+
+                    String url = "https://play.google.com/store/apps/details?id=com.pentasounds.soundboardninja";
+
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    onPause();
+                    startActivity(intent);
+                }
+
+
+                if (menuItem.getItemId() == R.id.mythsoundboard) {
+
+                    String url = "https://play.google.com/store/apps/details?id=com.pentasounds.soundboardtsmmyth";
+
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    onPause();
+                    startActivity(intent);
+                }
+
+
+                if (menuItem.getItemId() == R.id.soundboardapps) {
+
+                    String url = "https://play.google.com/store/apps/developer?id=PentaSounds";
+
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    onPause();
+                    startActivity(intent);
+                }
+
+                if (menuItem.getItemId() == R.id.buttonapps) {
+
+                    String url = "https://play.google.com/store/apps/developer?id=PentaButtons";
+
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    onPause();
+                    startActivity(intent);
+                }
+
+                if (menuItem.getItemId() == R.id.instagram) {
+
+                    AlertDialog.Builder a_builder = new AlertDialog.Builder(MainActivity.this);
+                    a_builder.setMessage(R.string.instagram_text)
+                            .setCancelable(true)
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    String url = "https://www.redirection.lima-city.de/links/instagram.html";
+
+                                    Intent intent = new Intent();
+                                    intent.setAction(Intent.ACTION_VIEW);
+                                    intent.setData(Uri.parse(url));
+                                    onPause();
+                                    startActivity(intent);
+                                }
+                            })
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int i) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alert = a_builder.create();
+                    alert.setTitle("Instagram");
+                    alert.show();
+                }
+
+//                if (menuItem.getItemId() == R.id.paypaldialog) {
+//                    saveToWeb("paypal_dialog");
+//
+//
+//
+//                    AlertDialog.Builder a_builder = new AlertDialog.Builder(MainActivity.this);
+//                    a_builder.setMessage(R.string.paypal_text)
+//                            .setCancelable(true)
+//                            .setPositiveButton("Zu PayPal", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialogInterface, int i) {
+//                                    saveToWeb("paypal");
+//                                    String url = "https://www.redirection.lima-city.de/links/paypal.html";
+//
+//                                    Intent intent = new Intent();
+//                                    intent.setAction(Intent.ACTION_VIEW);
+//                                    intent.setData(Uri.parse(url));
+//                                    onPause();
+//                                    startActivity(intent);
+//                                }
+//                            })
+//                            .setNegativeButton("Ne, bin gerade Broke", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int i) {
+//                                    dialog.cancel();
+//                                }
+//                            });
+//                    AlertDialog alert = a_builder.create();
+//                    alert.setTitle("Unterstützung");
+//                    alert.show();
+//                }
+
+
+
+                if (menuItem.getItemId() == R.id.email) {
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                            "mailto","pentasounds@gmail.com", null));
+                    emailIntent.putExtra(Intent.EXTRA_TEXT,"[Packagename:" + getText(R.string.package_name) +  "  ---Don't delete this information---]\n\n\n\n\n (Your Text here)");
+                    startActivity(Intent.createChooser(emailIntent, "Send E-Mail..."));
+                }
+
+
+                if (menuItem.getItemId() == R.id.rechtliches) {
+                    AlertDialog.Builder a_builder = new AlertDialog.Builder(MainActivity.this);
+                    a_builder.setMessage(R.string.rechtliches)
+                            .setCancelable(true)
+                            .setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int i) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alert = a_builder.create();
+                    alert.setTitle("Impressum");
+                    alert.show();
+                }
+
+
+
+
                 return false;
             }
 
@@ -162,6 +318,9 @@ public class MainActivity extends AppCompatActivity {
         hard.setAlpha(0.2f);
         expert.setAlpha(1f);
     }
+
+
+
 
 
 

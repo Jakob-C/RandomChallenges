@@ -4,4 +4,69 @@
     android:layout_marginTop="10dp">
 
 
+
+    <item android:title="Sounds"
+        android:id="@+id/nav_item_inbox"
+        android:layout_marginTop="10dp"
+        android:icon="@drawable/soundicon" />
+
+    <item android:title="Share App"
+        android:id="@+id/teilen"
+        android:layout_marginTop="10dp"
+        android:icon="@drawable/shareimg" />
+
+    <item android:title="More from us ">
+        <menu>
+
+            <item
+                android:id="@+id/soundboardapps"
+                android:icon="@drawable/playstore"
+                android:title="All Soundboards" />
+            <item
+                android:id="@+id/buttonapps"
+                android:icon="@drawable/button"
+                android:title="All Button Apps" />
+
+            <item
+                android:id="@+id/chestmap"
+                android:icon="@drawable/chestmap"
+                android:title="Fortnite Chest Map" />
+
+            <item
+                android:id="@+id/ninjasoundboard"
+                android:icon="@drawable/ninjas"
+                android:title="Ninja Fortnite Soundboard" />
+
+            <item
+                android:id="@+id/mythsoundboard"
+                android:icon="@drawable/myth"
+                android:title="Myth Fortnite Soundboard" />
+
+        </menu>
+    </item>
+
+
+    <item android:title="Contact">
+        <menu>
+            <!--<item-->
+                <!--android:id="@+id/paypaldialog"-->
+                <!--android:icon="@drawable/paypal"-->
+                <!--android:title="Unterstützung" />-->
+            <item
+                android:id="@+id/instagram"
+                android:icon="@drawable/instagramm"
+                android:title="Instagram" />
+            <item
+                android:id="@+id/email"
+                android:icon="@drawable/emailicon"
+                android:title="Contact" />
+            <item
+                android:id="@+id/rechtliches"
+                android:icon="@drawable/gesetzt"
+                android:title="Impressum" />
+
+
+        </menu>
+    </item>
+
 </menu>
