@@ -1,4 +1,4 @@
-package com.jakob.randomchallenges;
+package com.pentasounds.randomchallenges;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.jakob.randomchallenges", appContext.getPackageName());
+        assertEquals("com.pentasounds.randomchallenges", appContext.getPackageName());
     }
 }

@@ -17,6 +17,10 @@
 
     <item android:title="More from us ">
         <menu>
+            <item
+                android:id="@+id/quiz"
+                android:icon="@drawable/quizicon"
+                android:title="Fortnite Quiz" />
 
 
             <item

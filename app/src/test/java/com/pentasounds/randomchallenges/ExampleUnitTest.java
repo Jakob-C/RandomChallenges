@@ -1,4 +1,4 @@
-package com.jakob.randomchallenges;
+package com.pentasounds.randomchallenges;
 
 import org.junit.Test;
 
