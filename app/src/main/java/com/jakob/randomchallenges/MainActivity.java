@@ -36,7 +36,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button easy, hard, expert;
+    ImageView easy, hard, expert;
     TextView playbutton;
     int angle;
     ImageView pointer, greenwheel, orangewheel, redwheel;
@@ -53,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         mNavigationView = (NavigationView) findViewById(R.id.shitstuff);
 
-        easy=(Button)findViewById(R.id.easy);
-        hard=(Button)findViewById(R.id.hard);
-        expert=(Button)findViewById(R.id.expert);
+        easy=(ImageView)findViewById(R.id.diff_easy);
+        hard=(ImageView)findViewById(R.id.diff_hard);
+        expert=(ImageView)findViewById(R.id.diff_expert);
 
         greenwheel=(ImageView)findViewById(R.id.greenwheel);
         orangewheel=(ImageView)findViewById(R.id.orangewheel);
@@ -297,25 +297,25 @@ public class MainActivity extends AppCompatActivity {
         orangewheel.setVisibility(View.INVISIBLE);
         redwheel.setVisibility(View.INVISIBLE);
         easy.setAlpha(1f);
-        hard.setAlpha(0.2f);
-        expert.setAlpha(0.2f);
+        hard.setAlpha(0.35f);
+        expert.setAlpha(0.35f);
     }
 
     public void hard (View v){
         orangewheel.setVisibility(View.VISIBLE);
         greenwheel.setVisibility(View.INVISIBLE);
         redwheel.setVisibility(View.INVISIBLE);
-        easy.setAlpha(0.2f);
+        easy.setAlpha(0.35f);
         hard.setAlpha(1f);
-        expert.setAlpha(0.2f);
+        expert.setAlpha(0.35f);
     }
 
     public void expert (View v){
         redwheel.setVisibility(View.VISIBLE);
         greenwheel.setVisibility(View.INVISIBLE);
         orangewheel.setVisibility(View.INVISIBLE);
-        easy.setAlpha(0.2f);
-        hard.setAlpha(0.2f);
+        easy.setAlpha(0.35f);
+        hard.setAlpha(0.35f);
         expert.setAlpha(1f);
     }
 
