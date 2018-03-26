@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="@drawable/variante2"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     tools:context="com.jakob.randomchallenges.MainActivity">
 
 
@@ -99,8 +100,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:layout_margin="10dp"
                 android:src="@drawable/greenwheel"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
                 android:visibility="visible" />
 
             <ImageView
@@ -109,8 +111,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:layout_margin="10dp"
                 android:src="@drawable/orangewheel"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
                 android:visibility="invisible" />
 
 
@@ -120,7 +123,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:layout_margin="10dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
                 android:src="@drawable/redwheel"
                 android:visibility="invisible" />
 
@@ -156,6 +160,18 @@
             android:text="Spin"
             />
 
+
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:adSize="SMART_BANNER"
+            android:layout_gravity="bottom|end"
+            ads:adUnitId="@string/banner_ad_unit_id">
+        </com.google.android.gms.ads.AdView>
 
 
     </RelativeLayout>

@@ -23,6 +23,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
@@ -42,12 +47,47 @@ public class MainActivity extends AppCompatActivity {
     ImageView pointer, greenwheel, orangewheel, redwheel;
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
+    Handler handler;
 
+    int counter;
+
+    public InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        counter = 0;
+
+
+
+        AdView mAdView = (AdView)findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        mInterstitialAd = new InterstitialAd(getApplicationContext());
+        mInterstitialAd.setAdUnitId(getText(R.string.interstitial_ad_unit_id) + "");
+        mInterstitialAd.loadAd(adRequest);
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                //Ads loaded
+            }
+
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
+                //Ads closed
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                super.onAdFailedToLoad(errorCode);
+                //Ads couldn't loaded
+            }
+        });
+        mInterstitialAd.loadAd(adRequest);
+
 
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -65,45 +105,12 @@ public class MainActivity extends AppCompatActivity {
         Typeface burbank = Typeface.createFromAsset(getApplication().getAssets(), "burbank.otf");
         playbutton.setTypeface(burbank);
 
-        final Handler handler = new Handler();
+        handler = new Handler();
 
         pointer=(ImageView)findViewById(R.id.arrow);
 
-        playbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                handler.removeCallbacksAndMessages(null);
 
-                playbutton.animate().alpha(0f).setDuration(400);
-
-                Random rand = new Random();
-                int zusatzdrehung = rand.nextInt(2000) + 2000;
-                int time = rand.nextInt(2000)+4000;
-
-                angle=angle+zusatzdrehung;
-                pointer.animate().rotation(angle).setDuration(time);
-
-//                long pos=angle%360;
-//                Log.e("###", "Neigung in Grad:   "+pos);
-//                final long twelfth = pos/30+1;
-//                Log.e("###", "Anzahl der Zwöftel:"+twelfth);
-//
-//                Log.e("###", "Drehdauer:          "+time);
-
-
-                // "Spin" Text erscheinung
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Do something after 5s = 5000ms
-                        playbutton.animate().alpha(1f).setDuration(400);
-
-                    }
-                }, time-400);
-
-            }
-        });
-
+        SpinClick();
 
         mNavigationView.setItemIconTintList(null);
 
@@ -317,6 +324,65 @@ public class MainActivity extends AppCompatActivity {
         easy.setAlpha(0.35f);
         hard.setAlpha(0.35f);
         expert.setAlpha(1f);
+    }
+
+    public void SpinClick (){
+
+
+
+        playbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handler.removeCallbacksAndMessages(null);
+
+
+                counter++;
+                if(counter == 8){
+
+
+
+                    if(mInterstitialAd.isLoaded()) {
+                        mInterstitialAd.show();
+
+                        AdRequest adRequest = new AdRequest.Builder().build();
+                        mInterstitialAd = new InterstitialAd(getApplicationContext());
+                        mInterstitialAd.setAdUnitId(getText(R.string.interstitial_ad_unit_id) + "");
+                        mInterstitialAd.loadAd(adRequest);
+                    }
+
+                    counter = 0;
+                }
+
+                playbutton.animate().alpha(0f).setDuration(400);
+
+                Random rand = new Random();
+                int zusatzdrehung = rand.nextInt(2000) + 2000;
+                int time = rand.nextInt(2000)+4000;
+
+                angle=angle+zusatzdrehung;
+                pointer.animate().rotation(angle).setDuration(time);
+
+//                long pos=angle%360;
+//                Log.e("###", "Neigung in Grad:   "+pos);
+//                final long twelfth = pos/30+1;
+//                Log.e("###", "Anzahl der Zwöftel:"+twelfth);
+//
+//                Log.e("###", "Drehdauer:          "+time);
+
+
+                // "Spin" Text erscheinung
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Do something after 5s = 5000ms
+                        playbutton.animate().alpha(1f).setDuration(400);
+
+                    }
+                }, time-400);
+
+            }
+        });
+
     }
 
 
