@@ -1,86 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:background="@drawable/variante2"
     tools:context="com.jakob.randomchallenges.MainActivity">
 
-    <LinearLayout
-        android:layout_marginTop="5dp"
-        android:layout_width="wrap_content"
+
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true">
+        android:background="@color/orange"
+        android:id="@+id/toolbar"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title="@string/app_name" />
 
-        <Button
-            android:textColor="#fff"
-            android:background="@drawable/roundedbuttongreen"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:id="@+id/easy"
-            android:text="Easy"
+
+    <android.support.v4.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/drawerLayout">
+
+
+
+
+
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/containerView">
+
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="easy"/>
-        <Button
-            android:textColor="#fff"
-            android:alpha="0.2"
-            android:background="@drawable/roundedbuttonorange"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:id="@+id/hard"
-            android:text="Hard"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:textColor="#fff"
+                android:background="@drawable/roundedbuttongreen"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/easy"
+                android:text="Easy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="easy"/>
+            <Button
+                android:textColor="#fff"
+                android:alpha="0.2"
+                android:background="@drawable/roundedbuttonorange"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/hard"
+                android:text="Hard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="hard"/>
+            <Button
+                android:textColor="#fff"
+                android:alpha="0.2"
+                android:background="@drawable/roundedbuttonred"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/expert"
+                android:text="Expert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="expert"/>
+
+
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/greenwheel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="hard"/>
-        <Button
-            android:textColor="#fff"
-            android:alpha="0.2"
-            android:background="@drawable/roundedbuttonred"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:id="@+id/expert"
-            android:text="Expert"
+            android:layout_margin="10dp"
+            android:visibility="visible"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/greenwheel"/>
+
+        <ImageView
+            android:id="@+id/orangewheel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="expert"/>
+            android:layout_margin="10dp"
+            android:visibility="invisible"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/orangewheel"/>
+
+
+        <ImageView
+            android:id="@+id/redwheel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:visibility="invisible"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/redwheel"/>
 
 
 
-    </LinearLayout>
 
 
-    <ImageView
-        android:id="@+id/wheel"
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/pointer5"
+            android:scaleY="1"
+            />
+        <TextView
+            android:id="@+id/playbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:textSize="30dp"
+            android:text="Spin"
+            />
+
+
+    </RelativeLayout>
+
+
+
+
+    <android.support.design.widget.NavigationView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/greenwheel"/>
-
-    <ImageView
-        android:id="@+id/arrow"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/pointer"
-        android:scaleY="1"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:id="@+id/shitstuff"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/drawermenu"
         />
-    <TextView
-        android:id="@+id/playbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold"
-        android:textColor="#fff"
-        android:textSize="30dp"
-        android:text="Spin"
-        />
 
 
 
 
-</RelativeLayout>
+    </android.support.v4.widget.DrawerLayout>
+
+</LinearLayout>
