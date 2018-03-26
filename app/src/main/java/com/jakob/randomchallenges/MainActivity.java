@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView mNavigationView;
     Handler handler;
 
-    int counter;
+    int spincounter, difficultycounter;
 
     public InterstitialAd mInterstitialAd;
 
@@ -57,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        counter = 0;
+        spincounter = 0;
+        difficultycounter = 0;
 
 
 
@@ -250,6 +251,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void easy (View v){
+        difficultyWerbeAbfrage();
         greenwheel.setVisibility(View.VISIBLE);
         orangewheel.setVisibility(View.INVISIBLE);
         redwheel.setVisibility(View.INVISIBLE);
@@ -259,6 +261,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void hard (View v){
+        difficultyWerbeAbfrage();
         orangewheel.setVisibility(View.VISIBLE);
         greenwheel.setVisibility(View.INVISIBLE);
         redwheel.setVisibility(View.INVISIBLE);
@@ -268,6 +271,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void expert (View v){
+        difficultyWerbeAbfrage();
         redwheel.setVisibility(View.VISIBLE);
         greenwheel.setVisibility(View.INVISIBLE);
         orangewheel.setVisibility(View.INVISIBLE);
@@ -278,16 +282,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void SpinClick (){
 
-
-
         playbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 handler.removeCallbacksAndMessages(null);
 
 
-                counter++;
-                if(counter == 8){
+                spincounter++;
+                if(spincounter == 8){
 
 
 
@@ -300,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
                         mInterstitialAd.loadAd(adRequest);
                     }
 
-                    counter = 0;
+                    spincounter = 0;
                 }
 
                 playbutton.animate().alpha(0f).setDuration(400);
@@ -338,6 +340,26 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+    public void difficultyWerbeAbfrage(){
+
+        difficultycounter++;
+        if(difficultycounter == 3){
+            if(mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+
+                AdRequest adRequest = new AdRequest.Builder().build();
+                mInterstitialAd = new InterstitialAd(getApplicationContext());
+                mInterstitialAd.setAdUnitId(getText(R.string.interstitial_ad_unit_id) + "");
+                mInterstitialAd.loadAd(adRequest);
+            }
+
+            difficultycounter = 0;
+
+        }
+
+
+    }
 
 
 }
